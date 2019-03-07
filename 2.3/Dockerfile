@@ -7,10 +7,10 @@ MAINTAINER Tim Taylor <ttaylor@mitre.org>
 
 EXPOSE 8080
 
-ENV RUBY_VERSION 2.3
-ENV YARN_VERSION 1.13.0
+ENV RUBY_VERSION=2.3 \
+    YARN_VERSION=1.13.0 \
 
-ENV SUMMARY="Platform for building and running Ruby $RUBY_VERSION applications" \
+    SUMMARY="Platform for building and running Ruby $RUBY_VERSION applications" \
     DESCRIPTION="Ruby $RUBY_VERSION available as docker container is a base platform for \
 building and running various Ruby $RUBY_VERSION applications and frameworks. \
 Ruby is the interpreted scripting language for quick and easy object-oriented programming. \
