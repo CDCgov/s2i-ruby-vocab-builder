@@ -29,24 +29,6 @@ LABEL summary="$SUMMARY" \
       release="4.1" \
       maintainer="Tim Taylor <ttaylor@mitre.org>"
 
-#######################
-# MITRE Additions
-#######################
-
-ENV http_proxy=http://gatekeeper.mitre.org:80/ \
-    https_proxy=http://gatekeeper.mitre.org:80/
-
-# Add proxy to environment
-COPY proxy.sh /etc/profile.d/
-
-# Add MITRE CA certificates to system trusted store
-COPY certs/*.pem /etc/pki/ca-trust/source/anchors/
-RUN /usr/bin/update-ca-trust extract
-
-#######################
-# end MITRE Additions
-#######################
-
 # To use subscription inside container yum command has to be run first (before yum-config-manager)
 # https://access.redhat.com/solutions/1443553
 RUN yum repolist > /dev/null && \

@@ -29,24 +29,6 @@ LABEL summary="$SUMMARY" \
       release="1" \
       maintainer="Tim Taylor <ttaylor@mitre.org>"
 
-#######################
-# MITRE Additions
-#######################
-
-ENV http_proxy=http://gatekeeper.mitre.org:80/ \
-    https_proxy=http://gatekeeper.mitre.org:80/
-
-# Add proxy to environment
-COPY proxy.sh /etc/profile.d/
-
-# Add MITRE CA certificates to system trusted store
-COPY certs/*.pem /etc/pki/ca-trust/source/anchors/
-RUN /usr/bin/update-ca-trust extract
-
-#######################
-# end MITRE Additions
-#######################
-
 RUN yum install -y centos-release-scl && \
     yum-config-manager --enable centos-sclo-rh-testing && \
     INSTALL_PKGS="rh-ruby25 rh-ruby25-ruby-devel rh-ruby25-rubygem-rake rh-ruby25-rubygem-bundler rh-nodejs10" && \
