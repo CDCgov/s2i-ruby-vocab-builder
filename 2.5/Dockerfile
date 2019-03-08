@@ -1,13 +1,13 @@
 FROM centos/s2i-base-centos7
 
-# This image provides a Ruby 2.3 environment you can use to run your Ruby
+# This image provides a Ruby 2.5 environment you can use to run your Ruby
 # applications.
 
 MAINTAINER Tim Taylor <ttaylor@mitre.org>
 
 EXPOSE 8080
 
-ENV RUBY_VERSION=2.3 \
+ENV RUBY_VERSION=2.5 \
     YARN_VERSION=1.13.0 \
 
     SUMMARY="Platform for building and running Ruby $RUBY_VERSION applications" \
@@ -20,18 +20,36 @@ It is simple, straight-forward, and extensible."
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
       io.k8s.description="$DESCRIPTION" \
-      io.k8s.display-name="Ruby 2.3" \
+      io.k8s.display-name="Ruby 2.5" \
       io.openshift.expose-services="8080:http" \
-      io.openshift.tags="builder,ruby,ruby23,rh-ruby23" \
-      com.redhat.component="rh-ruby23-docker" \
-      name="centos/ruby-vocab-23-centos7" \
-      version="2.3" \
+      io.openshift.tags="builder,ruby,ruby25,rh-ruby25" \
+      com.redhat.component="rh-ruby25-docker" \
+      name="centos/ruby-vocab-25-centos7" \
+      version="2.5" \
       release="1" \
       maintainer="Tim Taylor <ttaylor@mitre.org>"
 
+#######################
+# MITRE Additions
+#######################
+
+ENV http_proxy=http://gatekeeper.mitre.org:80/ \
+    https_proxy=http://gatekeeper.mitre.org:80/
+
+# Add proxy to environment
+COPY proxy.sh /etc/profile.d/
+
+# Add MITRE CA certificates to system trusted store
+COPY certs/*.pem /etc/pki/ca-trust/source/anchors/
+RUN /usr/bin/update-ca-trust extract
+
+#######################
+# end MITRE Additions
+#######################
+
 RUN yum install -y centos-release-scl && \
     yum-config-manager --enable centos-sclo-rh-testing && \
-    INSTALL_PKGS="rh-ruby23 rh-ruby23-ruby-devel rh-ruby23-rubygem-rake rh-ruby23-rubygem-bundler rh-nodejs10" && \
+    INSTALL_PKGS="rh-ruby25 rh-ruby25-ruby-devel rh-ruby25-rubygem-rake rh-ruby25-rubygem-bundler rh-nodejs10" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
     wget https://github.com/yarnpkg/yarn/releases/download/v$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz && \
     mkdir -p /opt && \

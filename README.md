@@ -18,7 +18,7 @@ These images have been customized for the SDP Vocabulary service.
 Versions
 ---------------
 Ruby versions currently provided are:
-* ruby-2.3
+* ruby-2.5
 
 RHEL versions currently supported are:
 * RHEL7
@@ -38,7 +38,7 @@ To build a Ruby image, choose either the CentOS or RHEL based image:
     ```
     $ git clone https://gitlab.mitre.org/CDC-SDP/s2i-ruby-container.git
     $ cd s2i-ruby-container
-    $ make build TARGET=rhel7 VERSIONS=2.3
+    $ make build TARGET=rhel7 VERSIONS=2.5
     ```
 
 *  **CentOS based image**
@@ -46,7 +46,7 @@ To build a Ruby image, choose either the CentOS or RHEL based image:
     This image is available on DockerHub. To download it run:
 
     ```
-    $ docker pull centos/ruby-23-centos7
+    $ docker pull centos/ruby-25-centos7
     ```
 
     To build a Ruby image from scratch run:
@@ -54,7 +54,7 @@ To build a Ruby image, choose either the CentOS or RHEL based image:
     ```
     $ git clone https://gitlab.mitre.org/CDC-SDP/s2i-ruby-container.git
     $ cd s2i-ruby-container
-    $ make build TARGET=centos7 VERSIONS=2.3
+    $ make build TARGET=centos7 VERSIONS=2.5
     ```
 
 **Notice: By omitting the `VERSIONS` parameter, the build/test action will be performed
@@ -65,8 +65,8 @@ on all provided versions of Ruby.**
 Usage
 ---------------------------------
 
-For information about usage of Dockerfile for Ruby 2.3,
-see [usage documentation](2.3/README.md).
+For information about usage of Dockerfile for Ruby 2.5,
+see [usage documentation](2.5/README.md).
 
 
 Test
@@ -83,14 +83,14 @@ Users can choose between testing a Ruby test application based on a RHEL or Cent
 
     ```
     $ cd s2i-ruby-container
-    $ make test TARGET=rhel7 VERSIONS=2.3
+    $ make test TARGET=rhel7 VERSIONS=2.5
     ```
 
 *  **CentOS based image**
 
     ```
     $ cd s2i-ruby-container
-    $ make test TARGET=centos7 VERSIONS=2.3
+    $ make test TARGET=centos7 VERSIONS=2.5
     ```
 
 **Notice: By omitting the `VERSIONS` parameter, the build/test action will be performed
@@ -112,7 +112,7 @@ Image name structure
 ------------------------
 
 1. Platform name (lowercase) - ruby
-2. Platform version(without dots) - 23
+2. Platform version(without dots) - 25
 3. Base builder image - centos7/rhel7
 
-Examples: `ruby-23-centos7`, `ruby-23-rhel7`
+Examples: `ruby-25-centos7`, `ruby-25-rhel7`

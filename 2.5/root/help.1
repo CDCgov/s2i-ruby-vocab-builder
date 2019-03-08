@@ -1,4 +1,4 @@
-.TH Ruby 2.3 platform for building and running applications
+.TH Ruby 2.5 platform for building and running applications
 .PP
 This repository contains the source for building various versions of
 the Ruby application as a reproducible Docker image using
@@ -15,7 +15,7 @@ so ruby gems can be downloaded.
 .SH Usage
 .PP
 To build a simple ruby\-sample\-app
-\[la]https://github.com/sclorg/s2i-ruby-container/tree/master/2.3/test/puma-test-app\[ra] application
+\[la]https://github.com/sclorg/s2i-ruby-container/tree/master/2.5/test/puma-test-app\[ra] application
 using standalone S2I
 \[la]https://github.com/openshift/source-to-image\[ra] and then run the
 resulting image with Docker
@@ -28,7 +28,7 @@ resulting image with Docker
 .RS
 
 .nf
-$ s2i build https://github.com/sclorg/s2i\-ruby\-container.git \-\-context\-dir=2.3/test/puma\-test\-app/ rhscl/ruby\-23\-rhel7 ruby\-sample\-app
+$ s2i build https://github.com/sclorg/s2i\-ruby\-container.git \-\-context\-dir=2.5/test/puma\-test\-app/ rhscl/ruby\-25\-rhel7 ruby\-sample\-app
 $ docker run \-p 8080:8080 ruby\-sample\-app
 
 .fi
@@ -41,7 +41,7 @@ $ docker run \-p 8080:8080 ruby\-sample\-app
 .RS
 
 .nf
-$ s2i build https://github.com/sclorg/s2i\-ruby\-container.git \-\-context\-dir=2.3/test/puma\-test\-app/ centos/ruby\-23\-centos7 ruby\-sample\-app
+$ s2i build https://github.com/sclorg/s2i\-ruby\-container.git \-\-context\-dir=2.5/test/puma\-test\-app/ centos/ruby\-25\-centos7 ruby\-sample\-app
 $ docker run \-p 8080:8080 ruby\-sample\-app
 
 .fi

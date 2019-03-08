@@ -1,4 +1,4 @@
-Ruby 2.3 platform for building and running applications
+Ruby 2.5 platform for building and running applications
 =======================================================
 
 This repository contains the source for building various versions of
@@ -13,19 +13,19 @@ so ruby gems can be downloaded.
 
 Usage
 ---------------------
-To build a simple [ruby-sample-app](https://github.com/sclorg/s2i-ruby-container/tree/master/2.3/test/puma-test-app) application
+To build a simple [ruby-sample-app](https://github.com/sclorg/s2i-ruby-container/tree/master/2.5/test/puma-test-app) application
 using standalone [S2I](https://github.com/openshift/source-to-image) and then run the
 resulting image with [Docker](http://docker.io) execute:
 
 *  **For RHEL based image**
     ```
-    $ s2i build https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.3/test/puma-test-app/ rhscl/ruby-23-rhel7 ruby-sample-app
+    $ s2i build https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.5/test/puma-test-app/ rhscl/ruby-vocab-25-rhel7 ruby-sample-app
     $ docker run -p 8080:8080 ruby-sample-app
     ```
 
 *  **For CentOS based image**
     ```
-    $ s2i build https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.3/test/puma-test-app/ centos/ruby-23-centos7 ruby-sample-app
+    $ s2i build https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.5/test/puma-test-app/ centos/ruby-vocab-25-centos7 ruby-sample-app
     $ docker run -p 8080:8080 ruby-sample-app
     ```
 
